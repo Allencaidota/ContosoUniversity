@@ -24,3 +24,15 @@ project:
 3. Create page: edited the studentController in create method that i added try, catch to post info if the create is not valid 
 4. FunPart: it is very bad to pass the value by entity because even you didnt show your entity in the html hacker can still use tool such as fiddler to exuctue your property
             the we can solve this by using BindAttribute or use view models rather than entity classes with model binding
+            
+7/31/2021
+try to work on the CRUD functionailty
+1. edit page: First, we need to edit the edit function in the studentcontroller
+              I overview the code from top find out db is schoolContext which is the database we set for the SchoolContext 
+              the original one is not good enough for overposting, so i need to change the function
+              I used ValidateAntiForgeryToken which  is an action filter that can be applied to an individual action, a controller, or globally. 
+              Requests made to actions that have this filter applied are blocked unless the request includes a valid antiforgery token.
+2. What we did on the edit controller:
+            checking if id is null, if yes we return to the httpstatus bad result, if !null we pass the updated vaule to db which is our schoolcontext class instance 
+            Therefore, Using the tryUpdateModel which Updates the specified model instance using values from the controller's current value provider, a prefix, and included                 properties. Last we have db.savechange which casuse Entity Framework to create SQL statements to update the database row.
+            At the end, we have to try catch to check if there is error

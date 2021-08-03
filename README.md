@@ -36,3 +36,12 @@ try to work on the CRUD functionailty
             checking if id is null, if yes we return to the httpstatus bad result, if !null we pass the updated vaule to db which is our schoolcontext class instance 
             Therefore, Using the tryUpdateModel which Updates the specified model instance using values from the controller's current value provider, a prefix, and included                 properties. Last we have db.savechange which casuse Entity Framework to create SQL statements to update the database row.
             At the end, we have to try catch to check if there is error
+ 
+ 
+8/2/2021
+try to finish the delete function 
+1. First I edited the delete actionresult in the controller 
+2. I optimize the delete page that if the delete id is null, the system will pop up a error message. To do that, i insert savechangesError boolean to check true or false. 
+   Therefore, I need to add the viewBag error message to the delete views
+3. I changed the delete action with adding a try catch. the httpPost Delete will try to find the student id in database, remove, and saveChange. if dataexcpetion pop error messege and reireact to index page.
+4. Finally, we have the dispose function which Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

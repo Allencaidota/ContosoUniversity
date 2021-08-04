@@ -57,4 +57,4 @@ Add sorting, filtering, and paging with the Entity Framework in an ASP.NET MVC a
              next: using linq to select data from student db
              after getting the data we can sort the data in controller
 2. edit the view index student page
-
+            the table was displayname from model.name, fname, and enrollmentdate to actionlink

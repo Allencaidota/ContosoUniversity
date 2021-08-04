@@ -45,3 +45,16 @@ try to finish the delete function
    Therefore, I need to add the viewBag error message to the delete views
 3. I changed the delete action with adding a try catch. the httpPost Delete will try to find the student id in database, remove, and saveChange. if dataexcpetion pop error messege and reireact to index page.
 4. Finally, we have the dispose function which Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+
+
+8/3/2021 
+Add sorting, filtering, and paging with the Entity Framework in an ASP.NET MVC application
+1. add sorting to student index page:
+             edited the student index in student controller
+                        add sortOrder algorithm to controller by using    
+                        ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+                        ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date"; 
+             next: using linq to select data from student db
+             after getting the data we can sort the data in controller
+2. edit the view index student page
+

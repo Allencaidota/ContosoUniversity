@@ -58,3 +58,11 @@ Add sorting, filtering, and paging with the Entity Framework in an ASP.NET MVC a
              after getting the data we can sort the data in controller
 2. edit the view index student page
             the table was displayname from model.name, fname, and enrollmentdate to actionlink
+            
+8/4/2021
+Add a Search box
+using the students from we created for the sortOrder funtion 
+add a seachString parmater to the index controller method
+check if string is null if not null we use "where" linq to search and use contains function to seach the string that pass by textbox
+last we need to add textbox  to index view and search button
+

@@ -66,3 +66,22 @@ add a seachString parmater to the index controller method
 check if string is null if not null we use "where" linq to search and use contains function to seach the string that pass by textbox
 last we need to add textbox  to index view and search button
 
+8/5/2021
+add paging to the Students index page.
+1. First: installing the PagedList.Mvc NuGet package - Install-Package PagedList.Mvc. 
+The PagedList.Mvc package installs a paging helper that displays the paging buttons.
+Second: Add paging functionality to the Index method
+add a page parameter, a current sort order parameter, and a current filter parameter to the method
+Because we may have muti pages in the student index and we need to deal with sort and search, we need to check if user has other action in different page
+First, use currSort to save the sortOrder. next i need to check if the searchString is null or not because search will have impact on page dsiplay
+lastly, we set the page size and pageNumber to the ToPageList method
+2. since we change a lot in the controller we need to edit the view also
+The @model statement at the top of the page specifies that the view now gets a PagedList object instead of a List object.
+The using statement for PagedList.Mvc gives access to the MVC helper for the paging buttons.
+The code uses an overload of BeginForm that allows it to specify FormMethod.Get.
+For changing the page : @Html.PagedListPager( Model, page => Url.Action("Index", new { page }) )
+
+
+
+
+

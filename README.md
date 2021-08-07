@@ -81,6 +81,21 @@ The using statement for PagedList.Mvc gives access to the MVC helper for the pag
 The code uses an overload of BeginForm that allows it to specify FormMethod.Get.
 For changing the page : @Html.PagedListPager( Model, page => Url.Action("Index", new { page }) )
 
+8/6/2021
+Create an about page
+
+Create a view model class for the data that you need to pass to the view.
+            EnrollmentDateGroup and student number in viewModel class for the view
+Modify the About method in the Home controller.
+            add namespace dal and viewModels to HomeController
+            add student db context to homeController, and use it to get the studentd data by using LINQ statment groups to collect information
+            return view(data.tolist());
+            Add a Dispose method to release the garbage data;
+Modify the About view.
+            simplely just add a title name and table which can display the EnrollmentDate and studentCount.
+
+
+
 
 
 

@@ -94,8 +94,21 @@ Modify the About method in the Home controller.
 Modify the About view.
             simplely just add a title name and table which can display the EnrollmentDate and studentCount.
 
+8/11/2021
+Enable connection resiliency
+There is many problem could happen when your web in production such as load balancers. 
+Those error is hard to aviod. as result, we can Use connection resiliency and command interception with Entity Framework in an ASP.NET MVC app.
 
-
+1. create a SchoolConfiguration inheritence by DbConfiguration in DAL folder
+2. There will be a constrator use SetExecutionStrategy("System.Data.SqlClient", () => new SqlAzureExecutionStrategy()); 
+            it Creates a new instance of System.Data.Entity.SqlServer.SqlAzureExecutionStrategy.
+3. add using System.Data.Entity.Infrastructure; to controller and change all the chatch to our "RetryLimitExceededException"
+            such that :
+                        catch (RetryLimitExceededException /* dex */)
+{
+    //Log the error (uncomment dex variable name and add a line here to write a log.
+    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+}
 
 
 

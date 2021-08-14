@@ -10,8 +10,6 @@ namespace ContosoUniversity.DAL
         {
             //Creates a new instance of System.Data.Entity.SqlServer.SqlAzureExecutionStrategy.
             SetExecutionStrategy("System.Data.SqlClient", () => new SqlAzureExecutionStrategy());
-
-
         }
     }
 }

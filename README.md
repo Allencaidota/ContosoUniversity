@@ -124,4 +124,18 @@ Create interceptor classes
 6. finally, add         DbInterception.Add(new SchoolInterceptorTransientErrors());
                          DbInterception.Add(new SchoolInterceptorLogging());
             to application_start();
+            
+8/16/2021
+Enable Code First migrations : The Code First Migrations feature solves this problem by enabling Code First to update the database schema instead of dropping and re-creating the database. In this tutorial, you'll deploy the application, and to prepare for that you'll enable Migrations.
+
+1.Disable the initializer that you set up earlier by commenting out or deleting the contexts element that you added to the application Web.config file.
+2.change the name of the database in the connection string to ContosoUniversity2.
+3.From the Tools menu, select NuGet Package Manager > Package Manager Console.
+4.At the PM> prompt enter the following commands: enable-migrations, add-migration InitialCreate
+
+After create migrations 
+we will have a  ContosoUniversity\Migrations\Configuration.cs file which has a seed method in Configuration class
+The purpose of the Seed method is to enable you to insert or update test data after Code First creates or updates the database. The method is called when the database is created and every time the database schema is updated after a data model change.
+Set up the Seed method :
+The Seed method takes the database context object as an input parameter, and the code in the method uses that object to add new entities to the database
 

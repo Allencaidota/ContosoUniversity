@@ -96,7 +96,7 @@ Modify the About view.
 
 8/11/2021
 Enable connection resiliency
-There is many problem could happen when your web in production such as load balancers. 
+There is many problem could happen in production such as load balancers. 
 Those error is hard to aviod. as result, we can Use connection resiliency and command interception with Entity Framework in an ASP.NET MVC app.
 
 1. create a SchoolConfiguration inheritence by DbConfiguration in DAL folder
@@ -105,11 +105,23 @@ Those error is hard to aviod. as result, we can Use connection resiliency and co
 3. add using System.Data.Entity.Infrastructure; to controller and change all the chatch to our "RetryLimitExceededException"
             such that :
                         catch (RetryLimitExceededException /* dex */)
-{
-    //Log the error (uncomment dex variable name and add a line here to write a log.
-    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-}
+                        {
+                                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                        }
 
+8/15/2021
+Create a logging interface and class
+1. create the logger interface call "ILogger" which has such information, warning, error, and traceApi function
+2. impelement the interface in the Logger.cs. The implementation uses System.Diagnostics to do the tracing.
 
-
+Create interceptor classes
+1.create the classes that the Entity Framework will call into every time it is going to send a query to the database, one to simulate transient errors and one to do logging.
+2. using DbCommandInterceptor and overrides its method for the SchoolInterceptorLogging.cs
+3. For successful queries or commands, this code writes an Information log with latency information. For exceptions, it creates an Error log.
+4. For search box we also need one a interceptor class that will generate dummy transient errors when you enter "Throw". 
+5. it only overrides the ReaderExecuting method, which is called for queries that can return multiple rows of data.
+6. finally, add         DbInterception.Add(new SchoolInterceptorTransientErrors());
+                         DbInterception.Add(new SchoolInterceptorLogging());
+            to application_start();
 

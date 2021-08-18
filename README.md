@@ -139,3 +139,10 @@ The purpose of the Seed method is to enable you to insert or update test data af
 Set up the Seed method :
 The Seed method takes the database context object as an input parameter, and the code in the method uses that object to add new entities to the database
 
+8/17/2021
+Deploy to Azure
+create account - upgrade 
+publish project in vs 
+here is the web address:
+https://contosouniversity20210817233708.azurewebsites.net/
+

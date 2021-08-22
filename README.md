@@ -150,3 +150,6 @@ https://contosouniversity20210817233708.azurewebsites.net/
 8/19/2021
 having problem about azure sql database
 got to study azure...
+
+8/21/2021
+problem was sloved by recreating the azure subscribtion 

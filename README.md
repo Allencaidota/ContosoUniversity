@@ -153,3 +153,5 @@ got to study azure...
 
 8/21/2021
 problem was sloved by recreating the azure subscribtion 
+
+8/23/2021
